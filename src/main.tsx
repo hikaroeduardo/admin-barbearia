@@ -8,6 +8,8 @@ import Login from "./pages/login/index.tsx";
 import Register from "./pages/register/index.tsx";
 import Dashboard from "./pages/dashboard/index.tsx";
 import { Layout } from "./components/layout/index.tsx";
+import Clients from "./pages/clients/index.tsx";
+import Services from "./pages/services/index.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
     <React.StrictMode>
@@ -18,6 +20,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
                     <Route path="/cadastro" element={<Register />} />
                     <Route path="/" element={<Layout />}>
                         <Route path="/dashboard" element={<Dashboard />} />
+                        <Route path="/clientes" element={<Clients />} />
+                        <Route path="/servicos" element={<Services />} />
                     </Route>
                 </Route>
             </Routes>

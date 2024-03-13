@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
@@ -28,48 +28,68 @@ export const Layout = () => {
                     </div>
 
                     <ul className="flex gap-10">
-                        <li
-                            className="text-white cursor-pointer"
-                            onMouseOver={() => setHoverMenuItemDashboard(true)}
-                            onMouseOut={() => setHoverMenuItemDashboard(false)}
-                        >
-                            Dashboard
-                            <div
-                                className={`mt-1 h-0.5 m-auto rounded-sm bg-white ${
-                                    hoverMenuItemDashboard
-                                        ? "w-[100%]"
-                                        : "w-[0%]"
-                                } transition-all duration-500`}
-                            />
-                        </li>
+                        <Link to="/dashboard">
+                            <li
+                                className="text-white cursor-pointer"
+                                onMouseOver={() =>
+                                    setHoverMenuItemDashboard(true)
+                                }
+                                onMouseOut={() =>
+                                    setHoverMenuItemDashboard(false)
+                                }
+                            >
+                                Dashboard
+                                <div
+                                    className={`mt-1 h-0.5 m-auto rounded-sm bg-white ${
+                                        hoverMenuItemDashboard
+                                            ? "w-[100%]"
+                                            : "w-[0%]"
+                                    } transition-all duration-500`}
+                                />
+                            </li>
+                        </Link>
 
-                        <li
-                            className="text-white cursor-pointer"
-                            onMouseOver={() => setHoverMenuItemClients(true)}
-                            onMouseOut={() => setHoverMenuItemClients(false)}
-                        >
-                            Clientes
-                            <div
-                                className={`mt-1 h-0.5 m-auto rounded-sm bg-white ${
-                                    hoverMenuItemClients ? "w-[100%]" : "w-[0%]"
-                                } transition-all duration-500`}
-                            />
-                        </li>
+                        <Link to="/clientes">
+                            <li
+                                className="text-white cursor-pointer"
+                                onMouseOver={() =>
+                                    setHoverMenuItemClients(true)
+                                }
+                                onMouseOut={() =>
+                                    setHoverMenuItemClients(false)
+                                }
+                            >
+                                Clientes
+                                <div
+                                    className={`mt-1 h-0.5 m-auto rounded-sm bg-white ${
+                                        hoverMenuItemClients
+                                            ? "w-[100%]"
+                                            : "w-[0%]"
+                                    } transition-all duration-500`}
+                                />
+                            </li>
+                        </Link>
 
-                        <li
-                            className="text-white cursor-pointer"
-                            onMouseOver={() => setHoverMenuItemServices(true)}
-                            onMouseOut={() => setHoverMenuItemServices(false)}
-                        >
-                            Serviços
-                            <div
-                                className={`mt-1 h-0.5 m-auto rounded-sm bg-white ${
-                                    hoverMenuItemServices
-                                        ? "w-[100%]"
-                                        : "w-[0%]"
-                                } transition-all duration-500`}
-                            />
-                        </li>
+                        <Link to="/servicos">
+                            <li
+                                className="text-white cursor-pointer"
+                                onMouseOver={() =>
+                                    setHoverMenuItemServices(true)
+                                }
+                                onMouseOut={() =>
+                                    setHoverMenuItemServices(false)
+                                }
+                            >
+                                Serviços
+                                <div
+                                    className={`mt-1 h-0.5 m-auto rounded-sm bg-white ${
+                                        hoverMenuItemServices
+                                            ? "w-[100%]"
+                                            : "w-[0%]"
+                                    } transition-all duration-500`}
+                                />
+                            </li>
+                        </Link>
                     </ul>
 
                     <div>
