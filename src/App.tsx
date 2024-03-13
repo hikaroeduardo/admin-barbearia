@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 
 function App() {
     return (
-        <div className="bg-[#e0e0e0] h-screen">
+        <div className="bg-[rgb(235,237,239)] h-screen">
             <Outlet />
         </div>
     );

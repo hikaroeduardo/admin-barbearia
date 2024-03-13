@@ -16,7 +16,7 @@ export default function Login() {
     return (
         <div className="h-full bg-[url('/bg-login.jpg')] bg-no-repeat bg-cover bg-center">
             <div className="w-full h-full bg-black/80 flex items-center justify-center p-5">
-                <div className="w-full max-w-[25rem] bg-white p-10 rounded-2xl">
+                <div className="w-full max-w-[35rem] bg-white p-10 rounded-2xl">
                     <form
                         onSubmit={(e) => handleLogin(e)}
                         className="flex flex-col gap-8"
