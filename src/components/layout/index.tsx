@@ -107,7 +107,7 @@ export const Layout = () => {
                 </div>
             </div>
 
-            <div className="mx-auto mt-4 px-4 max-w-[1500px]">
+            <div className="mx-auto mt-8 px-4 max-w-[1500px]">
                 <Outlet />
             </div>
         </div>
