@@ -9,7 +9,10 @@ import {
 import { ColumnDef } from "@tanstack/react-table";
 import { MoreHorizontal } from "lucide-react";
 
-export const DataColumnsTableService = ({ handleClickEdit }: any) => {
+export const DataColumnsTableService = ({
+    handleClickEdit,
+    handleClickRemove,
+}: any) => {
     const columnsTableService: ColumnDef<ServiceProps>[] = [
         {
             accessorKey: "status",
@@ -60,7 +63,13 @@ export const DataColumnsTableService = ({ handleClickEdit }: any) => {
                                 >
                                     Editar
                                 </DropdownMenuItem>
-                                <DropdownMenuItem>Excluir</DropdownMenuItem>
+                                <DropdownMenuItem
+                                    onClick={() =>
+                                        handleClickRemove(row.original)
+                                    }
+                                >
+                                    Excluir
+                                </DropdownMenuItem>
                             </DropdownMenuContent>
                         </DropdownMenu>
                     </div>

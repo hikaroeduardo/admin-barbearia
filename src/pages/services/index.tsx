@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { DataTable } from "@/components/dataTable";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,7 +13,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { DataColumnsTableService } from "./columnsTable";
-import { useState } from "react";
 
 export type ServiceProps = {
     id: string;
@@ -40,6 +40,7 @@ export default function Services() {
     const [openDialogNewService, setOpenDialogNewService] =
         useState<boolean>(false);
     const [openDialogEdit, setOpenDialogEdit] = useState<boolean>(false);
+    const [openDialogRemove, setOpenDialogRemove] = useState<boolean>(false);
     const [nameNewService, setNameNewService] = useState<string>("");
     const [priceNewService, setPriceNewService] = useState<string>("");
     const [currentServiceName, setCurrentServiceName] = useState<string>("");
@@ -54,7 +55,15 @@ export default function Services() {
         setCurrentServiceId(row.id);
     };
 
-    const columnsTableService = DataColumnsTableService({ handleClickEdit });
+    const handleClickRemove = (row: any) => {
+        setOpenDialogRemove(true);
+        setCurrentServiceName(row.name);
+    };
+
+    const columnsTableService = DataColumnsTableService({
+        handleClickEdit,
+        handleClickRemove,
+    });
 
     const clearInputsNewService = () => {
         setNameNewService("");
@@ -95,6 +104,15 @@ export default function Services() {
 
         setDataRows(copyDataRows);
         setOpenDialogEdit(false);
+    };
+
+    const removeService = () => {
+        const remainingServices = dataRows.filter(
+            (service) => service.name !== currentServiceName
+        );
+
+        setDataRows(remainingServices);
+        setOpenDialogRemove(false);
     };
 
     return (
@@ -232,6 +250,36 @@ export default function Services() {
                             }
                         >
                             Editar
+                        </Button>
+                    </DialogFooter>
+                </DialogContent>
+            </Dialog>
+
+            <Dialog
+                open={openDialogRemove}
+                onOpenChange={() => setOpenDialogRemove(!openDialogRemove)}
+            >
+                <DialogContent className="sm:max-w-[425px]">
+                    <DialogHeader>
+                        <DialogTitle>
+                            Excluir serviço - {currentServiceName}
+                        </DialogTitle>
+                        <DialogDescription>
+                            Você tem certeza que deseja excluir este serviço?
+                        </DialogDescription>
+                    </DialogHeader>
+
+                    <DialogFooter className="flex gap-5">
+                        <Button className="flex-1" variant="secondary">
+                            Cancelar
+                        </Button>
+
+                        <Button
+                            className="flex-1"
+                            variant="destructive"
+                            onClick={removeService}
+                        >
+                            Excluir
                         </Button>
                     </DialogFooter>
                 </DialogContent>
