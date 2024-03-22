@@ -13,13 +13,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { DataColumnsTableService } from "./columnsTable";
-
-export type ServiceProps = {
-    id: string;
-    status: string;
-    name: string;
-    price: string;
-};
+import { ServiceProps } from "./types";
 
 export default function Services() {
     const [dataRows, setDataRows] = useState<ServiceProps[]>([
@@ -47,7 +41,7 @@ export default function Services() {
     const [currentServicePrice, setCurrentServicePrice] = useState<string>("");
     const [currentServiceId, setCurrentServiceId] = useState<string>("");
 
-    const handleClickEdit = (row: any) => {
+    const handleClickEdit = (row: ServiceProps) => {
         setOpenDialogEdit(true);
 
         setCurrentServiceName(row.name);
@@ -55,7 +49,7 @@ export default function Services() {
         setCurrentServiceId(row.id);
     };
 
-    const handleClickRemove = (row: any) => {
+    const handleClickRemove = (row: ServiceProps) => {
         setOpenDialogRemove(true);
         setCurrentServiceName(row.name);
     };

@@ -21,7 +21,14 @@ import {
     TableRow,
 } from "@/components/ui/table";
 
-export function DataTable({ data, columns, placeholder, dataFilter }: any) {
+interface DataTableProps {
+    data: any;
+    columns: any;
+    placeholder: string;
+    dataFilter: string;
+}
+
+export function DataTable({ data, columns, placeholder, dataFilter }: DataTableProps) {
     const [sorting, setSorting] = React.useState<SortingState>([]);
     const [columnFilters, setColumnFilters] =
         React.useState<ColumnFiltersState>([]);

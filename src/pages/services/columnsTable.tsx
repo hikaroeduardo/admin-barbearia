@@ -1,4 +1,4 @@
-import { ServiceProps } from "./index";
+import { ServiceProps } from "./types";
 import { Button } from "@/components/ui/button";
 import {
     DropdownMenu,
@@ -9,10 +9,15 @@ import {
 import { ColumnDef } from "@tanstack/react-table";
 import { MoreHorizontal } from "lucide-react";
 
+interface DataColumnsTableServiceProps {
+    handleClickEdit: (row: ServiceProps) => void;
+    handleClickRemove: (row: ServiceProps) => void;
+}
+
 export const DataColumnsTableService = ({
     handleClickEdit,
     handleClickRemove,
-}: any) => {
+}: DataColumnsTableServiceProps) => {
     const columnsTableService: ColumnDef<ServiceProps>[] = [
         {
             accessorKey: "status",
